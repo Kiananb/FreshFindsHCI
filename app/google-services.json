@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "267175410252",
+    "project_id": "step-4-project",
+    "storage_bucket": "step-4-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267175410252:android:3e8cdc651c1c60a6a812e9",
+        "android_client_info": {
+          "package_name": "com.example.freshfinds"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGSE3HGHC3LblbUZuujGSSW-_ICu7kJf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267175410252:android:a9c2b02d299dd7a1a812e9",
+        "android_client_info": {
+          "package_name": "com.example.step4project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGSE3HGHC3LblbUZuujGSSW-_ICu7kJf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

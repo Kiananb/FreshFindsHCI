@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FRESH Finds"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Search Bar -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search All Products..."
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:enabled="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Filter and Price Buttons -->
+    <LinearLayout
+        android:id="@+id/filterPriceLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout"
+        app:layout_constraintStart_toStartOf="@id/searchLayout"
+        app:layout_constraintEnd_toEndOf="@id/searchLayout">
+
+        <Button
+            android:id="@+id/filterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Filter"
+            android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+            android:backgroundTint="#BCD09179" />
+
+        <Button
+            android:id="@+id/priceButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Price"
+            android:drawableEnd="@android:drawable/arrow_up_float"
+            android:backgroundTint="#BCD09179" />
+    </LinearLayout>
+
+    <!-- Shop Aisles and Favourites List -->
+    <LinearLayout
+        android:id="@+id/sectionsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/filterPriceLayout"
+        app:layout_constraintStart_toStartOf="@id/searchLayout"
+        app:layout_constraintEnd_toEndOf="@id/searchLayout">
+
+        <TextView
+            android:id="@+id/shopAislesTextView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#D3D3D3"
+            android:gravity="center"
+            android:text="Shop Aisles"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/favouritesListTextView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="#D3D3D3"
+            android:gravity="center"
+            android:text="Favourites List"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Past Purchases -->
+    <TextView
+        android:id="@+id/pastPurchasesTextView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:background="#D3D3D3"
+        android:gravity="center"
+        android:text="Past Purchases"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/sectionsLayout"
+        app:layout_constraintStart_toStartOf="@id/searchLayout"
+        app:layout_constraintEnd_toEndOf="@id/searchLayout" />
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="#BCD09179"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
