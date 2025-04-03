@@ -18,12 +18,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPage extends AppCompatActivity {
 
-    private static final String TAG = "LoginPage"; // Log tag for debugging
+    private static final String TAG = "LoginPage";
     private TextInputEditText emailEditText, passwordEditText;
     private Button loginButton;
     private TextView registerNowText;
     private ProgressBar progressBar;
-    private FirebaseAuth mAuth; // Firebase Authentication instance
+    private FirebaseAuth mAuth; // Firebase Authentication
 
     @Override
     protected void onStart() {
@@ -47,14 +47,14 @@ public class LoginPage extends AppCompatActivity {
         // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
-        // Initialize UI elements
+
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         registerNowText = findViewById(R.id.registerNow);
         progressBar = findViewById(R.id.progressBar);
 
-        // Login button click listener
+        // Login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,7 @@ public class LoginPage extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 loginButton.setEnabled(false);
 
-                // Authenticate user with Firebase Authentication
+                // Authenticate user with Firebase
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
                             progressBar.setVisibility(View.GONE);
@@ -100,7 +100,7 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
-        // Navigate to RegisterPage when "Register Now" is clicked
+        // Navigate to RegisterPage
         registerNowText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

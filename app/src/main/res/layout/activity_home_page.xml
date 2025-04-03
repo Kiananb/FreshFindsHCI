@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- Title -->
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Search Bar -->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/searchLayout"
         android:layout_width="0dp"
@@ -39,7 +39,7 @@
             android:enabled="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Filter and Price Buttons -->
+
     <LinearLayout
         android:id="@+id/filterPriceLayout"
         android:layout_width="0dp"
@@ -70,7 +70,7 @@
             android:backgroundTint="#BCD09179" />
     </LinearLayout>
 
-    <!-- Shop Aisles and Favourites List -->
+
     <LinearLayout
         android:id="@+id/sectionsLayout"
         android:layout_width="0dp"
@@ -105,7 +105,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Past Purchases -->
+
     <TextView
         android:id="@+id/pastPurchasesTextView"
         android:layout_width="0dp"
@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="@id/searchLayout"
         app:layout_constraintEnd_toEndOf="@id/searchLayout" />
 
-    <!-- Bottom Navigation -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

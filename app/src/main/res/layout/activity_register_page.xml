@@ -61,7 +61,7 @@
             android:inputType="textPassword"
             android:textSize="20sp" />
 
-        <!-- Add ProgressBar here -->
+
         <ProgressBar
             android:id="@+id/registerProgressBar"
             android:layout_width="wrap_content"

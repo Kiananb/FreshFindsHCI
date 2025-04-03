@@ -18,14 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterPage extends AppCompatActivity {
 
-    private static final String TAG = "RegisterPage"; // Log tag for debugging
+    private static final String TAG = "RegisterPage";
 
     private TextInputEditText emailEditText, passwordEditText, confirmPasswordEditText;
     private Button registerButton;
     private TextView loginNowText;
     private ProgressBar progressBar;
 
-    private FirebaseAuth mAuth; // Firebase Authentication instance
+    private FirebaseAuth mAuth; // Firebase Authentication
 
     @Override
     protected void onStart() {
@@ -49,7 +49,7 @@ public class RegisterPage extends AppCompatActivity {
         // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
-        // Initialize UI elements
+
         emailEditText = findViewById(R.id.registerEmail);
         passwordEditText = findViewById(R.id.registerPassword);
         confirmPasswordEditText = findViewById(R.id.confirmPassword);
@@ -57,9 +57,9 @@ public class RegisterPage extends AppCompatActivity {
         loginNowText = findViewById(R.id.loginNow);
         progressBar = findViewById(R.id.registerProgressBar);
 
-        Log.d(TAG, "UI initialized");
 
-        // Register button click listener
+
+        // Register button
         registerButton.setOnClickListener(v -> {
             Log.d(TAG, "Register button clicked");
 
@@ -99,7 +99,7 @@ public class RegisterPage extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(RegisterPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "User registered successfully: " + email);
+
 
                             // Navigate to LoginPage or HomeActivity
                             startActivity(new Intent(RegisterPage.this, LoginPage.class));
@@ -107,14 +107,13 @@ public class RegisterPage extends AppCompatActivity {
                         } else {
                             String errorMessage = task.getException() != null ? task.getException().getMessage() : "Unknown error";
                             Toast.makeText(RegisterPage.this, "Registration failed: " + errorMessage, Toast.LENGTH_LONG).show();
-                            Log.e(TAG, "Registration failed: " + errorMessage);
+
                         }
                     });
         });
 
-        // Navigate to LoginPage when "Login Now" is clicked
+        // Navigate to LoginPage
         loginNowText.setOnClickListener(v -> {
-            Log.d(TAG, "Navigating to LoginPage");
             startActivity(new Intent(RegisterPage.this, LoginPage.class));
         });
     }
