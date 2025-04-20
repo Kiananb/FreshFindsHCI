@@ -1,6 +1,7 @@
 package com.example.freshfinds;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,6 +33,11 @@ public class LoginPage extends AppCompatActivity {
         // Check if user is already logged in
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            // Save the email in shared preferences to maintain state after logout
+            SharedPreferences loginPrefs = getSharedPreferences("LoginSession", MODE_PRIVATE);
+            loginPrefs.edit().putString("loggedInEmail", currentUser.getEmail()).apply();
+            
+            // Navigate to HomePage
             Intent intent = new Intent(getApplicationContext(), HomePage.class);
             startActivity(intent);
             finish();
@@ -87,11 +93,7 @@ public class LoginPage extends AppCompatActivity {
                             loginButton.setEnabled(true);
 
                             if (task.isSuccessful()) {
-                                Toast.makeText(LoginPage.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                                Log.d(TAG, "Login success: " + email);
-                                Intent intent = new Intent(LoginPage.this, HomePage.class);
-                                startActivity(intent);
-                                finish();
+                                onLoginSuccess(email);
                             } else {
                                 Toast.makeText(LoginPage.this, "Authentication failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 Log.e(TAG, "Login failed: " + task.getException().getMessage());
@@ -109,5 +111,37 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void onLoginSuccess(String email) {
+        // Save user session
+        SharedPreferences loginPrefs = getSharedPreferences("LoginSession", MODE_PRIVATE);
+        loginPrefs.edit().putString("loggedInEmail", email).apply();
+        
+        // Reload all user data from storage
+        reloadUserData();
+        
+        // Navigate to home page
+        Toast.makeText(LoginPage.this, "Login successful!", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "Login success: " + email);
+        
+        Intent intent = new Intent(LoginPage.this, HomePage.class);
+        intent.putExtra("user_email", email);
+        startActivity(intent);
+        finish();
+    }
+
+    private void reloadUserData() {
+        // Load all user data
+        CartManager.getInstance().reloadData();
+        OrderManager.getInstance().reloadData();
+        MessageStorage.getInstance().reloadData();
+        Product.reloadFavorites();
+        Log.d(TAG, "User data reloaded after login");
+    }
+
+    private boolean isValidCredentials(String email, String password) {
+        // For demo purposes, any non-empty email with '@' and any password of at least 6 chars
+        return email.contains("@") && password.length() >= 6;
     }
 }

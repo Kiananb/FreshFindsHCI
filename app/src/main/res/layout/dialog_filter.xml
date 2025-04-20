@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filter Products"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product Type"
+        android:textStyle="bold" />
+        
+    <CheckBox
+        android:id="@+id/checkBoxOrganic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Organic Only" />
+        
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price Range"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+        
+    <RadioGroup
+        android:id="@+id/radioGroupPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <RadioButton
+            android:id="@+id/radioAllPrices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Prices"
+            android:checked="true" />
+            
+        <RadioButton
+            android:id="@+id/radioUnder5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Under $5" />
+            
+        <RadioButton
+            android:id="@+id/radio5to10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="$5 to $10" />
+            
+        <RadioButton
+            android:id="@+id/radioOver10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Over $10" />
+    </RadioGroup>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Farm Location"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+        
+    <Spinner
+        android:id="@+id/spinnerLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp">
+        
+        <Button
+            android:id="@+id/buttonApplyFilters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Apply Filters"
+            android:layout_marginEnd="4dp" />
+            
+        <Button
+            android:id="@+id/buttonCancelFilters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+</LinearLayout>

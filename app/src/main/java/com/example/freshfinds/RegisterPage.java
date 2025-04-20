@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import android.content.SharedPreferences;
 
 public class RegisterPage extends AppCompatActivity {
 
@@ -98,12 +99,7 @@ public class RegisterPage extends AppCompatActivity {
                         registerButton.setEnabled(true);
 
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-
-
-                            // Navigate to LoginPage or HomeActivity
-                            startActivity(new Intent(RegisterPage.this, LoginPage.class));
-                            finish();
+                            onRegistrationSuccess(email);
                         } else {
                             String errorMessage = task.getException() != null ? task.getException().getMessage() : "Unknown error";
                             Toast.makeText(RegisterPage.this, "Registration failed: " + errorMessage, Toast.LENGTH_LONG).show();
@@ -116,5 +112,29 @@ public class RegisterPage extends AppCompatActivity {
         loginNowText.setOnClickListener(v -> {
             startActivity(new Intent(RegisterPage.this, LoginPage.class));
         });
+    }
+
+    private void onRegistrationSuccess(String email) {
+        // Save user session
+        SharedPreferences loginPrefs = getSharedPreferences("LoginSession", MODE_PRIVATE);
+        loginPrefs.edit().putString("loggedInEmail", email).apply();
+        
+        // Initialize user data storage
+        initializeUserData();
+        
+        // Navigate to home page
+        Toast.makeText(RegisterPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+        
+        Intent intent = new Intent(RegisterPage.this, HomePage.class);
+        intent.putExtra("user_email", email);
+        startActivity(intent);
+        finish();
+    }
+
+    private void initializeUserData() {
+        // Initialize empty data stores
+        CartManager.getInstance().clearCart();
+        // The other managers will auto-initialize on first access
+        Log.d(TAG, "User data initialized for new user");
     }
 }
